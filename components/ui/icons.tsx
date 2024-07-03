@@ -1,15 +1,13 @@
 'use client'
 import { useTheme } from 'next-themes'
 
-import { cn } from '@/lib/utils'
-
 function IconLogo({ className, ...props }: React.ComponentProps<'svg'>) {
   const { theme } = useTheme()
   console.log({ theme })
   return (
     <>
       <img
-        src={theme === 'light' ? '/logo.svg' : '/logTra.png'}
+        src={theme === 'dark' ? '/logTra.png' : '/logo.svg'}
         height={'70em'}
         width={'70em'}
         style={{ marginLeft: '5px' }}
