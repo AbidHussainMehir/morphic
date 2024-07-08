@@ -12,6 +12,7 @@ import { EmptyScreen } from './empty-screen'
 import Textarea from 'react-textarea-autosize'
 import { generateId } from 'ai'
 import { useAppState } from '@/lib/utils/app-state'
+import Typewriter from 'typewriter-effect'
 
 interface ChatPanelProps {
   messages: UIState
@@ -118,16 +119,49 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
       }
     >
       <form onSubmit={handleSubmit} className="max-w-2xl w-full px-6">
-        <div className="relative mb-1 w-[100%] flex items-center w-full">
-          <p style={{ fontWeight: 500, textAlign: 'center', width: '100%' }}>
-            Get Rewarded to Search with AI
-          </p>
+        <div
+          className="relative mb-1 w-[100%] flex items-center w-full"
+          style={{
+            fontWeight: 500,
+            display: 'flex',
+            justifyContent: 'center',
+            textAlign: 'center',
+            width: '100%'
+          }}
+        >
+          <div
+            style={{
+              maxWidth: '250px',
+              fontWeight: 500,
+              textAlign: 'center',
+              width: '100%',
+              height: '60px'
+            }}
+          >
+            <Typewriter
+              options={{
+                strings: [
+                  'Get Rewarded to Search with AI Search. Learn. Earn.',
+                  ''
+                ],
+
+                autoStart: true,
+                loop: true
+              }}
+            />
+          </div>
         </div>
-        <div className="relative  mb-4 flex items-center w-full">
-          <p style={{ fontWeight: 500, textAlign: 'center', width: '100%' }}>
-            Search. Learn. Earn.
-          </p>
-        </div>
+        {/* <div className="relative  mb-4 flex items-center w-full">
+          <div style={{ fontWeight: 500, textAlign: 'center', width: '100%' }}>
+            <Typewriter
+              options={{
+                strings: ['Search. Learn. Earn.'],
+                autoStart: true,
+                loop: true
+              }}
+            />
+          </div>
+        </div> */}
         <div className="relative flex items-center w-full">
           <Textarea
             ref={inputRef}
