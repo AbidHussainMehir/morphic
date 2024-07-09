@@ -140,15 +140,29 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
           >
             <Typewriter
               options={{
+                loop: true,
+                delay: 50
+              }}
+              onInit={typewriter => {
+                typewriter
+                  .pauseFor(100)
+                  .typeString('Earn Reward$ to Search With AI Learn With AI')
+                  .pauseFor(400)
+                  .deleteChars(13)
+                  .typeString('Grow With AI')
+                  .pauseFor(100)
+                  .start()
+              }}
+            />
+            {/* <Typewriter
+              options={{
                 strings: [
-                  'Get Rewarded to Search with AI Search. Learn. Earn.',
-                  ''
+                  'Earn Reward$ to Search With AI Learn With AI Grow With AI'
                 ],
-
                 autoStart: true,
                 loop: true
               }}
-            />
+            /> */}
           </div>
         </div>
         {/* <div className="relative  mb-4 flex items-center w-full">
