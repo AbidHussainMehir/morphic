@@ -131,26 +131,29 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
         >
           <div
             style={{
-              maxWidth: '250px',
-              fontWeight: 500,
+              fontWeight: 600,
               textAlign: 'center',
               width: '100%',
-              height: '60px'
+              height: '60px',
+              fontSize: '18px'
             }}
           >
             <Typewriter
               options={{
                 loop: true,
-                delay: 50
+                delay: 100
               }}
               onInit={typewriter => {
                 typewriter
                   .pauseFor(100)
-                  .typeString('Earn Reward$ to Search With AI Learn With AI')
+                  .typeString('Earn Reward$ to Search With AI')
+                  .pauseFor(400)
+                  .deleteChars(14)
+                  .typeString('Learn With AI')
                   .pauseFor(400)
                   .deleteChars(13)
                   .typeString('Grow With AI')
-                  .pauseFor(100)
+                  .pauseFor(400)
                   .start()
               }}
             />
