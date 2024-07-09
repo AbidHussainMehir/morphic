@@ -8,6 +8,7 @@ import Footer from '@/components/footer'
 import { Sidebar } from '@/components/sidebar'
 import { Toaster } from '@/components/ui/sonner'
 import { AppStateProvider } from '@/lib/utils/app-state'
+import { ThirdwebProvider } from 'thirdweb/react'
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -49,20 +50,22 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn('font-sans antialiased', fontSans.variable)}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <AppStateProvider>
-            <Header />
-            {children}
-            <Sidebar />
-            <Footer />
-            <Toaster />
-          </AppStateProvider>
-        </ThemeProvider>
+        <ThirdwebProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <AppStateProvider>
+              <Header />
+              {children}
+              <Sidebar />
+              <Footer />
+              <Toaster />
+            </AppStateProvider>
+          </ThemeProvider>
+        </ThirdwebProvider>
       </body>
     </html>
   )

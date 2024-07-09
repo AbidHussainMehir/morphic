@@ -42,7 +42,7 @@ export function History({ location, children }: HistoryProps) {
           variant="ghost"
           size="icon"
           className={cn({
-            'rounded-full text-foreground/30': location === 'sidebar'
+            'rounded-full text-foreground': location === 'sidebar'
           })}
           disabled={isGenerating}
         >

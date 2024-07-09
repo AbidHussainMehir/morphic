@@ -1,10 +1,14 @@
+'use client'
 import React from 'react'
 import { ModeToggle } from './mode-toggle'
 import { IconLogo } from './ui/icons'
 import { cn } from '@/lib/utils'
 import HistoryContainer from './history-container'
-
-export const Header: React.FC = async () => {
+import { ConnectButton, useActiveAccount } from 'thirdweb/react'
+import { client } from '../lib/utils/thirdweb-client'
+export const Header: React.FC = () => {
+  const account = useActiveAccount()
+  let isConnected = !!account
   return (
     <header className="fixed w-full p-1 md:p-2 flex justify-between items-center z-10 backdrop-blur md:backdrop-blur-none bg-background/80 md:bg-transparent">
       <div>
@@ -14,9 +18,19 @@ export const Header: React.FC = async () => {
           <span className="sr-only">Athena</span>
         </a>
       </div>
-      <div className="flex gap-0.5">
+      <div className="flex ">
         <ModeToggle />
         <HistoryContainer location="header" />
+        <div className={`${isConnected ? 'connected' : 'connect'}`}>
+          <ConnectButton
+            theme={'light'}
+            client={client}
+            appMetadata={{
+              name: 'Athena',
+              url: 'https://theathena.ai'
+            }}
+          />
+        </div>
       </div>
     </header>
   )
