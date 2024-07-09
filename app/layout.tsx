@@ -18,7 +18,7 @@ const fontSans = FontSans({
 
 const title = 'Athena'
 const description =
-  'A fully open-source AI-powered answer engine with a generative UI.'
+  'The AI-powered search engine that rewards you to learn and grow.'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.theathena.ai'),
