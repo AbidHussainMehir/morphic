@@ -1,3 +1,4 @@
+"use client"
 import type { Metadata, Viewport } from 'next'
 import { Inter as FontSans } from 'next/font/google'
 import './globals.css'
@@ -20,34 +21,38 @@ const title = 'Athena'
 const description =
   'The AI-powered search engine that rewards you to learn and grow.'
 
-export const metadata: Metadata = {
-  metadataBase: new URL('https://www.theathena.ai'),
-  title,
-  description,
-  openGraph: {
-    title,
-    description
-  },
-  twitter: {
-    title,
-    description,
-    card: 'summary_large_image',
-    creator: '@abid'
-  }
-}
-
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  minimumScale: 1,
-  maximumScale: 1
-}
+ 
 
 export default function RootLayout({
   children
 }: Readonly<{
   children: React.ReactNode
 }>) {
+
+
+  const metadata: Metadata = {
+    metadataBase: new URL('https://www.theathena.ai'),
+    title,
+    description,
+    openGraph: {
+      title,
+      description
+    },
+    twitter: {
+      title,
+      description,
+      card: 'summary_large_image',
+      creator: '@abid'
+    }
+  }
+  
+   const viewport: Viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    minimumScale: 1,
+    maximumScale: 1
+  }
+
   useEffect(() => {
     // Ensure the _mtm array exists on the window object
     window._mtm = window._mtm || []

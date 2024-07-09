@@ -4,12 +4,17 @@ import { useTheme } from 'next-themes'
 function IconLogo({ className, ...props }: React.ComponentProps<'svg'>) {
   const { theme } = useTheme()
   console.log({ theme })
+
+    // Determine image source based on theme
+    const logoSrc = theme === 'dark'
+    ? '/athena-high-resolution-logo-white-transparent.svg'
+    : '/athena-high-resolution-logo-transparent.svg';
   return (
     <>
       <img
-        src={theme === 'dark' ? '/logTra.png' : '/logo.svg'}
-        height={'70em'}
-        width={'70em'}
+        src={logoSrc}
+        height={'80em'}
+        width={'80em'}
         style={{ marginLeft: '5px' }}
       />
       {/* // <svg
