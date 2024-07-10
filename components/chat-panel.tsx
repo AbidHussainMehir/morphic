@@ -118,7 +118,10 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
         'fixed bottom-8 left-0 right-0 top-10 mx-auto h-screen flex flex-col items-center justify-center'
       }
     >
-      <form onSubmit={handleSubmit} className="max-w-2xl w-full px-6">
+      <form
+        onSubmit={handleSubmit}
+        className="max-w-2xl lg:mb-[10px] md:mb-[100px] w-full px-6"
+      >
         <div
           className="md:text-sm text-lg relative mb-1 w-[100%] flex items-center w-full"
           style={{
