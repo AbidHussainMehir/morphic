@@ -19,6 +19,28 @@ const title = 'Athena'
 const description =
   'The AI-powered search engine that rewards you to learn and grow.'
 
+export const metadata: Metadata = {
+  metadataBase: new URL('https://www.theathena.ai'),
+  title,
+  description,
+  openGraph: {
+    title,
+    description
+  },
+  twitter: {
+    title,
+    description,
+    card: 'summary_large_image',
+    creator: '@abid'
+  }
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  minimumScale: 1,
+  maximumScale: 1
+}
 export default function RootLayout({
   children
 }: Readonly<{
