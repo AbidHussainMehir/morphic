@@ -170,6 +170,8 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
             placeholder="Ask Athena anything..."
             spellCheck={false}
             value={input}
+            style={{ boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"}}
+
             className="resize-none border-black w-full min-h-12 rounded-fill bg-muted border border-input pl-4 pr-10 pt-3 pb-1 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50'"
             onChange={e => {
               setInput(e.target.value)
@@ -218,8 +220,9 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
             variant={'ghost'}
             className="absolute right-2 top-1/2 transform -translate-y-1/2"
             disabled={input.length === 0}
+            style={{opacity:'10'}}
           >
-            <ArrowRight size={20} />
+            <img src='/athena-favicon.svg'  />
           </Button>
         </div>
         <EmptyScreen
