@@ -48,23 +48,23 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  useEffect(() => {
-    // Ensure the _mtm array exists on the window object
-    window._mtm = window._mtm || []
-    window._mtm.push({
-      'mtm.startTime': new Date().getTime(),
-      event: 'mtm.Start'
-    })
-    const d = document
-    const g = d.createElement('script')
-    const s = d.getElementsByTagName('script')[0]
-    g.async = true
-    g.src =
-      'https://cdn.matomo.cloud/theathenaai.matomo.cloud/container_XxF5vFEJ.js'
-    if (s && s.parentNode) {
-      s.parentNode.insertBefore(g, s)
-    }
-  }, [])
+  // useEffect(() => {
+  //   // Ensure the _mtm array exists on the window object
+  //   window._mtm = window._mtm || []
+  //   window._mtm.push({
+  //     'mtm.startTime': new Date().getTime(),
+  //     event: 'mtm.Start'
+  //   })
+  //   const d = document
+  //   const g = d.createElement('script')
+  //   const s = d.getElementsByTagName('script')[0]
+  //   g.async = true
+  //   g.src =
+  //     'https://cdn.matomo.cloud/theathenaai.matomo.cloud/container_XxF5vFEJ.js'
+  //   if (s && s.parentNode) {
+  //     s.parentNode.insertBefore(g, s)
+  //   }
+  // }, [])
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn('font-sans antialiased', fontSans.variable)}>
