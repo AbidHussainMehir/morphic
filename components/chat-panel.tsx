@@ -120,7 +120,7 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
     >
       <form onSubmit={handleSubmit} className="max-w-2xl w-full px-6">
         <div
-          className="relative mb-1 w-[100%] flex items-center w-full"
+          className="md:text-sm text-lg relative mb-1 w-[100%] flex items-center w-full"
           style={{
             fontWeight: 500,
             display: 'flex',
@@ -131,11 +131,11 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
         >
           <div
             style={{
-              fontWeight: 600,
+              fontWeight: 400,
               textAlign: 'center',
               width: '100%',
               height: '60px',
-              fontSize: '18px'
+              fontSize: '22px'
             }}
           >
             <Typewriter
@@ -146,39 +146,20 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
               onInit={typewriter => {
                 typewriter
                   .pauseFor(100)
-                  .typeString('Earn rewards to search with AI')
+                  .typeString('Earn Rewards to Search with AI')
                   .pauseFor(400)
                   .deleteChars(14)
-                  .typeString('learn with AI')
+                  .typeString('Learn with AI')
                   .pauseFor(400)
                   .deleteChars(13)
-                  .typeString('grow with AI')
+                  .typeString('Grow with AI')
                   .pauseFor(400)
                   .start()
               }}
             />
-            {/* <Typewriter
-              options={{
-                strings: [
-                  'Earn Reward$ to Search With AI Learn With AI Grow With AI'
-                ],
-                autoStart: true,
-                loop: true
-              }}
-            /> */}
           </div>
         </div>
-        {/* <div className="relative  mb-4 flex items-center w-full">
-          <div style={{ fontWeight: 500, textAlign: 'center', width: '100%' }}>
-            <Typewriter
-              options={{
-                strings: ['Search. Learn. Earn.'],
-                autoStart: true,
-                loop: true
-              }}
-            />
-          </div>
-        </div> */}
+
         <div className="relative flex items-center w-full">
           <Textarea
             ref={inputRef}

@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter as FontSans } from 'next/font/google'
 import './globals.css'
 import { cn } from '@/lib/utils'
 import { ThemeProvider } from '@/components/theme-provider'
@@ -9,11 +8,7 @@ import { Sidebar } from '@/components/sidebar'
 import { Toaster } from '@/components/ui/sonner'
 import { AppStateProvider } from '@/lib/utils/app-state'
 import { ThirdwebProvider } from 'thirdweb/react'
-
-const fontSans = FontSans({
-  subsets: ['latin'],
-  variable: '--font-sans'
-})
+import Head from 'next/head'
 
 const title = 'Athena'
 const description =
@@ -67,12 +62,27 @@ export default function RootLayout({
   // }, [])
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn('font-sans antialiased', fontSans.variable)}>
+      <Head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin=""
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700;800&family=Roboto+Mono:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
+      <body
+        style={{
+          fontFamily: 'Jost, sans-serif'
+        }}
+      >
         <ThirdwebProvider>
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
-            enableSystem
+            defaultTheme="light"
             disableTransitionOnChange
           >
             <AppStateProvider>
