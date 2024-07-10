@@ -45,7 +45,10 @@ export const Header: React.FC = () => {
         </a>
       </div>
       <div className="flex ">
+        <span className='mr-2'>
+
         <ModeToggle />
+        </span>
         <HistoryContainer location="header" />
         <div className={`${isConnected ? 'connected' : 'connect'}`}>
         <ThirdwebProvider>

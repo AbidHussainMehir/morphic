@@ -9,7 +9,6 @@ import { Sidebar } from '@/components/sidebar'
 import { Toaster } from '@/components/ui/sonner'
 import { AppStateProvider } from '@/lib/utils/app-state'
 import { ThirdwebProvider } from 'thirdweb/react'
-import { useEffect } from 'react'
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -19,29 +18,6 @@ const fontSans = FontSans({
 const title = 'Athena'
 const description =
   'The AI-powered search engine that rewards you to learn and grow.'
-
-export const metadata: Metadata = {
-  metadataBase: new URL('https://www.theathena.ai'),
-  title,
-  description,
-  openGraph: {
-    title,
-    description
-  },
-  twitter: {
-    title,
-    description,
-    card: 'summary_large_image',
-    creator: '@abid'
-  }
-}
-
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  minimumScale: 1,
-  maximumScale: 1
-}
 
 export default function RootLayout({
   children
