@@ -5,16 +5,14 @@ function IconLogo({ className, ...props }: React.ComponentProps<'svg'>) {
   const { theme } = useTheme()
   console.log({ theme })
 
-    // Determine image source based on theme
-    const logoSrc = theme === 'dark'
-    ? '/athena-high-resolution-logo-white-transparent.svg'
-    : '/athena-high-resolution-logo-transparent.svg';
+  // Determine image source based on theme
+  const logoSrc = theme === 'dark' ? '/logo-white.svg' : '/logo.svg'
   return (
     <>
       <img
         src={logoSrc}
-        height={'80em'}
-        width={'80em'}
+        height={'100em'}
+        width={'100em'}
         style={{ marginLeft: '5px' }}
       />
       {/* // <svg
