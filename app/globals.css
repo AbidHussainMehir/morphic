@@ -80,11 +80,12 @@
 
 .gradient-btn {
   @apply bg-gradient-to-r hover:from-[#000000] hover:to-[#404040] from-[#404040] to-[#7F7F7F] transition hover:scale-105;
-  /* @apply bg-[#093e5e] hover:bg-red-500; */
+
 }
 
 .connect>button {
-  @apply h-[40px] text-xs font-bold tracking-wider md:text-base text-white rounded-[100px] cursor-pointer gradient-btn border-solid border-2 border-white hover:border-solid hover:border-2 hover:border-black;
+  @apply h-[40px];
+  /* @apply h-[40px] text-xs font-bold bg-accent tracking-wider md:text-base rounded-[100px] cursor-pointer border-solid border-2 border-white hover:border-solid hover:border-2 hover:border-black; */
 }
 
 .connect>button>div:nth-child(2) {

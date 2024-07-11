@@ -30,15 +30,12 @@ export const Header: React.FC = () => {
   return (
     <header className="fixed w-full p-1 md:p-2 flex justify-between items-center z-10 backdrop-blur md:backdrop-blur-none bg-background/80 md:bg-transparent">
       <div>
-        <span className="ml-5 gap-3">
-          <Button className="mr-2" variant="ghost" size="icon">
-            <Link href={'/'}>
-              <MenuIcon />
-            </Link>
-          </Button>
-          <Button variant="ghost" size="md">
-            <Link href={'/'}>Dashboard</Link>
-          </Button>
+        <span className="ml-5 gap-3 flex justify-center align-center">
+          {/* <Button className="mr-2" variant="ghost" size="icon"> */}
+          <Link href={'/'}>
+            <MenuIcon />
+          </Link>
+          {/* </Button> */}
         </span>
         <span className="sr-only">Athena</span>
       </div>
@@ -71,14 +68,6 @@ export const Header: React.FC = () => {
               showThirdwebBranding: false
             }}
           />
-          {/* <ConnectButton
-            theme={'light'}
-            client={client}
-            appMetadata={{
-              name: 'Athena',
-              url: 'https://theathena.ai'
-            }}
-          /> */}
         </div>
       </div>
     </header>

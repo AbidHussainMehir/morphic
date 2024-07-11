@@ -187,7 +187,7 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
             rows={1}
             maxRows={5}
             tabIndex={0}
-            placeholder="Ask Athena Anything to Learn and Earn..."
+            placeholder="ask Athena to learn and earn rewards"
             spellCheck={false}
             value={input}
             style={{
@@ -246,7 +246,7 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
           >
             <img
               src={
-                theme === 'light' ? '/search-icon.svg' : '/search-icon-dark.svg'
+                theme === 'dark' ? '/search-icon-dark.svg' : '/search-icon.svg'
               }
             />
           </Button>
