@@ -14,6 +14,7 @@ import { generateId } from 'ai'
 import { useAppState } from '@/lib/utils/app-state'
 import Typewriter from 'typewriter-effect'
 import { IconLogo } from './ui/icons'
+import { useTheme } from 'next-themes'
 
 interface ChatPanelProps {
   messages: UIState
@@ -21,6 +22,8 @@ interface ChatPanelProps {
 }
 
 export function ChatPanel({ messages, query }: ChatPanelProps) {
+  const { theme } = useTheme()
+
   const [input, setInput] = useState('')
   const [showEmptyScreen, setShowEmptyScreen] = useState(false)
   const [, setMessages] = useUIState<typeof AI>()
@@ -241,7 +244,11 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
             disabled={input.length === 0}
             style={{ opacity: '10' }}
           >
-            <img src="/athena-favicon.svg" />
+            <img
+              src={
+                theme === 'light' ? '/search-icon.svg' : '/search-icon-dark.svg'
+              }
+            />
           </Button>
         </div>
         <EmptyScreen
