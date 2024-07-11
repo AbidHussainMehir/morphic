@@ -56,8 +56,8 @@ export const Header: React.FC = () => {
               size: 'wide',
               title: ' Athena AI',
               welcomeScreen: {
-                title: 'The Future of Search is ',
-                subtitle: 'Create or connect to your wallet to get started '
+                title: 'The Future of Search with AI and Web3',
+                subtitle: 'Create or Connect to Your Wallet to Get Started '
               },
               showThirdwebBranding: false
             }}
