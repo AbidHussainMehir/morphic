@@ -9,6 +9,8 @@ import { client } from '../lib/utils/thirdweb-client'
 import { ThirdwebProvider, lightTheme } from 'thirdweb/react'
 import { createWallet, walletConnect, inAppWallet } from 'thirdweb/wallets'
 import Link from 'next/link'
+import { MenuIcon } from './ui/menu-icons'
+import { Button } from './ui/button'
 export const Header: React.FC = () => {
   const account = useActiveAccount()
   let isConnected = !!account
@@ -28,8 +30,15 @@ export const Header: React.FC = () => {
   return (
     <header className="fixed w-full p-1 md:p-2 flex justify-between items-center z-10 backdrop-blur md:backdrop-blur-none bg-background/80 md:bg-transparent">
       <div>
-        <span className="ml-5">
-          <Link href={'/'}>Dashboard</Link>
+        <span className="ml-5 gap-3">
+          <Button className="mr-2" variant="ghost" size="icon">
+            <Link href={'/'}>
+              <MenuIcon />
+            </Link>
+          </Button>
+          <Button variant="ghost" size="md">
+            <Link href={'/'}>Dashboard</Link>
+          </Button>
         </span>
         <span className="sr-only">Athena</span>
       </div>
