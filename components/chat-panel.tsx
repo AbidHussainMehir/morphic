@@ -13,6 +13,7 @@ import Textarea from 'react-textarea-autosize'
 import { generateId } from 'ai'
 import { useAppState } from '@/lib/utils/app-state'
 import Typewriter from 'typewriter-effect'
+import { IconLogo } from './ui/icons'
 
 interface ChatPanelProps {
   messages: UIState
@@ -120,8 +121,20 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
     >
       <form
         onSubmit={handleSubmit}
-        className="max-w-2xl lg:mb-[10px] md:mb-[100px] w-full px-6"
+        className="max-w-2xl mb-[200px] md:mb-[100px] w-full px-6"
       >
+        <div
+          className="md:text-sm mb-5 text-lg relative mb-1 w-[100%] flex items-center w-full"
+          style={{
+            fontWeight: 500,
+            display: 'flex',
+            justifyContent: 'center',
+            textAlign: 'center',
+            width: '100%'
+          }}
+        >
+          <IconLogo className="" />
+        </div>
         <div
           className="md:text-sm text-lg relative mb-1 w-[100%] flex items-center w-full"
           style={{
@@ -170,11 +183,13 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
             rows={1}
             maxRows={5}
             tabIndex={0}
-            placeholder="Ask Athena anything..."
+            placeholder="The AI Search Engine that Pays You to Learn "
             spellCheck={false}
             value={input}
-            style={{ boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"}}
-
+            style={{
+              boxShadow:
+                '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'
+            }}
             className="resize-none border-black w-full min-h-12 rounded-fill bg-muted border border-input pl-4 pr-10 pt-3 pb-1 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50'"
             onChange={e => {
               setInput(e.target.value)
@@ -223,9 +238,9 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
             variant={'ghost'}
             className="absolute right-2 top-1/2 transform -translate-y-1/2"
             disabled={input.length === 0}
-            style={{opacity:'10'}}
+            style={{ opacity: '10' }}
           >
-            <img src='/athena-favicon.svg'  />
+            <img src="/athena-favicon.svg" />
           </Button>
         </div>
         <EmptyScreen

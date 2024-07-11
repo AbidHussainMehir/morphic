@@ -20,15 +20,13 @@ export const metadata: Metadata = {
   description,
   openGraph: {
     title,
-    description,
-    images: ['/logo.svg']
+    description
   },
   twitter: {
     title,
     description,
     card: 'summary_large_image',
-    creator: '@abid',
-    images: ['/logo.svg']
+    creator: '@abid'
   }
 }
 

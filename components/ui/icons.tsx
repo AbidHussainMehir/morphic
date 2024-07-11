@@ -11,8 +11,8 @@ function IconLogo({ className, ...props }: React.ComponentProps<'svg'>) {
     <>
       <img
         src={logoSrc}
-        height={'115em'}
-        width={'115em'}
+        height={'160rem'}
+        width={'160rem'}
         style={{ marginLeft: '5px' }}
       />
       {/* // <svg
