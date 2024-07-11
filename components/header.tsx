@@ -6,35 +6,24 @@ import { cn } from '@/lib/utils'
 import HistoryContainer from './history-container'
 import { ConnectButton, useActiveAccount } from 'thirdweb/react'
 import { client } from '../lib/utils/thirdweb-client'
-import {
-  ThirdwebProvider,
-  // ConnectButton,
-} from "thirdweb/react";
-import {
-  createWallet,
-  walletConnect,
-  inAppWallet,
-} from "thirdweb/wallets";
+import { ThirdwebProvider, lightTheme } from 'thirdweb/react'
+import { createWallet, walletConnect, inAppWallet } from 'thirdweb/wallets'
 export const Header: React.FC = () => {
   const account = useActiveAccount()
   let isConnected = !!account
 
   const wallets = [
-    createWallet("io.metamask"),
-    createWallet("com.coinbase.wallet"),
+    createWallet('io.metamask'),
+    createWallet('com.coinbase.wallet'),
     walletConnect(),
     inAppWallet({
       auth: {
-        options: [
-          "email",
-          "google",
-          "apple",
-          "facebook",
-          "phone",
-        ],
-      },
+        options: ['email', 'google', 'apple', 'facebook']
+      }
     }),
-  ];
+    createWallet('com.trustwallet.app'),
+    createWallet('app.phantom')
+  ]
   return (
     <header className="fixed w-full p-1 md:p-2 flex justify-between items-center z-10 backdrop-blur md:backdrop-blur-none bg-background/80 md:bg-transparent">
       <div>
@@ -45,25 +34,34 @@ export const Header: React.FC = () => {
         </a>
       </div>
       <div className="flex ">
-        <span className='mr-2'>
-
-        <ModeToggle />
+        <span className="mr-2">
+          <ModeToggle />
         </span>
         <HistoryContainer location="header" />
         <div className={`${isConnected ? 'connected' : 'connect'}`}>
-        <ThirdwebProvider>
-      <ConnectButton
-        client={client}
-        wallets={wallets}
-        theme={"dark"}
-        connectModal={{
-          size: "compact",
-          title: "Connect to Athena AI",
-          titleIcon: "",
-          showThirdwebBranding: false,
-        }}
-      />
-    </ThirdwebProvider>
+          <ConnectButton
+            client={client}
+            wallets={wallets}
+            theme={lightTheme({
+              colors: {
+                accentText: '#02337e',
+                accentButtonBg: '#02337e',
+                borderColor: '#363536',
+                primaryButtonBg: '#090e95',
+                primaryButtonText: '#f9f5f9',
+                secondaryIconColor: '#544f72'
+              }
+            })}
+            connectModal={{
+              size: 'wide',
+              title: ' Athena AI',
+              welcomeScreen: {
+                title: 'The Future of Search is ',
+                subtitle: 'Create or connect to your wallet to get started '
+              },
+              showThirdwebBranding: false
+            }}
+          />
           {/* <ConnectButton
             theme={'light'}
             client={client}
