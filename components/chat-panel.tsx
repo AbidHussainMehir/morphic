@@ -162,14 +162,15 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
               onInit={typewriter => {
                 typewriter
                   .pauseFor(100)
-                  .typeString('Earn Rewards to Search with AI')
+                  .typeString('The AI and Web3 Powered Search Engine')
+                  // .typeString('The AI Search Engine that Pays You to Learn ')
                   .pauseFor(400)
-                  .deleteChars(14)
-                  .typeString('Learn with AI')
-                  .pauseFor(400)
-                  .deleteChars(13)
-                  .typeString('Grow with AI')
-                  .pauseFor(400)
+                  // .deleteChars(14)
+                  // .typeString('Learn with AI')
+                  // .pauseFor(400)
+                  // .deleteChars(13)
+                  // .typeString('Grow with AI')
+                  // .pauseFor(400)
                   .start()
               }}
             />
@@ -183,7 +184,7 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
             rows={1}
             maxRows={5}
             tabIndex={0}
-            placeholder="The AI Search Engine that Pays You to Learn "
+            placeholder="Ask Athena Anything to Learn and Earn..."
             spellCheck={false}
             value={input}
             style={{
