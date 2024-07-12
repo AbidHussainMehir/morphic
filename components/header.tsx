@@ -40,9 +40,9 @@ export const Header: React.FC = () => {
         <span className="sr-only">Athena</span>
       </div>
       <div className="flex ">
-        <span className="mr-2">
+        {/* <span className="mr-2">
           <ModeToggle />
-        </span>
+        </span> */}
         <HistoryContainer location="header" />
         <div className={`${isConnected ? 'connected' : 'connect'}`}>
           <ConnectButton
