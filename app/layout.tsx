@@ -58,6 +58,7 @@ export default function RootLayout({
   //     s.parentNode.insertBefore(g, s)
   //   }
   // }, [])
+
   return (
     <html lang="en" suppressHydrationWarning>
       <Head>
@@ -88,6 +89,7 @@ export default function RootLayout({
               {children}
               <Sidebar />
               <Footer />
+
               <Toaster />
             </AppStateProvider>
           </ThemeProvider>
