@@ -154,7 +154,7 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
               textAlign: 'center',
               width: '100%',
               height: '60px',
-              fontSize: '22px'
+              fontSize: '18px'
             }}
           >
             <Typewriter
