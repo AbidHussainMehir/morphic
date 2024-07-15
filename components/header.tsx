@@ -11,7 +11,11 @@ import { createWallet, walletConnect, inAppWallet } from 'thirdweb/wallets'
 import Link from 'next/link'
 import { MenuIcon } from './ui/menu-icons'
 import { Button } from './ui/button'
+import { useRouter } from 'next/navigation'
+
 export const Header: React.FC = () => {
+  const router = useRouter()
+
   const account = useActiveAccount()
   let isConnected = !!account
 
@@ -27,14 +31,17 @@ export const Header: React.FC = () => {
     createWallet('com.trustwallet.app'),
     createWallet('app.phantom')
   ]
+  const handleRedirect = () => {
+    router.push('/')
+  }
   return (
     <header className="fixed w-full p-1 md:p-2 flex justify-between items-center z-10 backdrop-blur md:backdrop-blur-none bg-background/80 md:bg-transparent">
       <div>
         <span className="ml-5 gap-3 flex justify-center align-center">
           {/* <Button className="mr-2" variant="ghost" size="icon"> */}
-          <Link href={'/'}>
+          <div style={{ cursor: 'pointer' }} onClick={handleRedirect}>
             <MenuIcon />
-          </Link>
+          </div>
           {/* </Button> */}
         </span>
         <span className="sr-only">Athena</span>
