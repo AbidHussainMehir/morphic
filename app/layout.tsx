@@ -8,7 +8,8 @@ import { Sidebar } from '@/components/sidebar'
 import { Toaster } from '@/components/ui/sonner'
 import { AppStateProvider } from '@/lib/utils/app-state'
 import { ThirdwebProvider } from 'thirdweb/react'
-import Head from 'next/head'
+import Document, { Html, Head, Main, NextScript } from 'next/document'
+import Script from 'next/script'
 
 const title = 'Athena'
 const description =
@@ -73,6 +74,28 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </Head>
+      <Script id="matomo" strategy="afterInteractive">
+        {`
+              var _paq = window._paq = window._paq || [];
+              _paq.push(['trackPageView']);
+              _paq.push(['enableLinkTracking']);
+              (function() {
+                var u="//ec2-18-188-43-57.us-east-2.compute.amazonaws.com/matomo/";
+                _paq.push(['setTrackerUrl', u+'matomo.php']);
+                _paq.push(['setSiteId', '1']);
+                var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+                g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+              })();
+            `}
+      </Script>
+      <noscript>
+        <img
+          referrerPolicy="no-referrer-when-downgrade"
+          src="http://ec2-18-188-43-57.us-east-2.compute.amazonaws.com/matomo/matomo.php?idsite=1&rec=1"
+          style={{ border: 0 }}
+          alt=""
+        />
+      </noscript>
       <body
         style={{
           fontFamily: 'Jost, sans-serif'
