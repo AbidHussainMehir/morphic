@@ -8,7 +8,7 @@ import { Sidebar } from '@/components/sidebar'
 import { Toaster } from '@/components/ui/sonner'
 import { AppStateProvider } from '@/lib/utils/app-state'
 import { ThirdwebProvider } from 'thirdweb/react'
-import Document, { Html, Head, Main, NextScript } from 'next/document'
+import Head from 'next/head'
 import Script from 'next/script'
 
 const title = 'Athena'
