@@ -90,6 +90,14 @@ export default function RootLayout({
           fontFamily: 'Jost, sans-serif'
         }}
       >
+        <noscript>
+          <img
+            referrerPolicy="no-referrer-when-downgrade"
+            src="https://analytics.theathena.ai/matomo.php?idsite=1&amp;rec=1"
+            style={{ border: '0' }}
+            alt=""
+          />
+        </noscript>
         <ThirdwebProvider>
           <ThemeProvider
             attribute="class"
