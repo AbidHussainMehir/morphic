@@ -56,8 +56,8 @@ export function getModel(useSubModel = false) {
     apiKey: openaiApiKey, // optional API key, default to env property OPENAI_API_KEY
     organization: '' // optional organization
   })
-
-  return openai.chat(openaiApiModel)
+  // openai
+  return openai(openaiApiModel)
 }
 
 /**
