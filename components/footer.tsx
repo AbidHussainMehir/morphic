@@ -13,11 +13,11 @@ const Footer: React.FC = () => {
       {!pathname.includes('search') && !pathname.includes('share') && (
         <div className="flex mb-4 gap-4 w-[100%] justify-center">
           <Button variant="ghost" size="md">
-            <Link href={'/'}>Dashboard</Link>
+            <Link href={'https://dashboard.theathena.ai'}>Dashboard</Link>
           </Button>
           <Button variant={'ghost'} size={'md'}>
             <Link
-              href="https://git.new/theathena"
+              href="https://docs.theathena.ai"
               className="mx-2"
               target="_blank"
             >
@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
           </Button>
 
           <Button variant={'ghost'} size={'icon'}>
-            <Link href="https://git.new/theathena" target="_blank">
+            <Link href="mailto:hello@theathena.ai" target="_blank">
               <SiGmail size={18} />
             </Link>
           </Button>
