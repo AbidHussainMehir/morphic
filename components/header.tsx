@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ModeToggle } from './mode-toggle'
 import { IconLogo } from './ui/icons'
 import { cn } from '@/lib/utils'
@@ -34,12 +34,33 @@ export const Header: React.FC = () => {
   const handleRedirect = () => {
     router.push('/')
   }
+  useEffect(() => {
+    const handleLogoClick = () => {
+      window._mtm = window._mtm || []
+      window._mtm.push({
+        event: 'logo-click',
+        'event-category': 'logo-clicked',
+        'event-action': document.title + ' - ' + window.location.href
+      })
+    }
+
+    const logoElement = document.getElementById('logo')
+    if (logoElement) {
+      logoElement.addEventListener('click', handleLogoClick)
+    }
+
+    return () => {
+      if (logoElement) {
+        logoElement.removeEventListener('click', handleLogoClick)
+      }
+    }
+  }, [])
   return (
     <header className="fixed w-full p-1 md:p-2 flex justify-between items-center z-10 backdrop-blur md:backdrop-blur-none bg-background/80 md:bg-transparent">
       <div>
         <span className="ml-5 gap-3 flex justify-center align-center">
           {/* <Button className="mr-2" variant="ghost" size="icon"> */}
-          <div style={{ cursor: 'pointer' }} onClick={handleRedirect}>
+          <div style={{ cursor: 'pointer' }} id="logo" onClick={handleRedirect}>
             <MenuIcon />
           </div>
           {/* </Button> */}
