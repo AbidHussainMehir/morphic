@@ -12,7 +12,7 @@ import Link from 'next/link'
 import { MenuIcon } from './ui/menu-icons'
 import { Button } from './ui/button'
 import { useRouter } from 'next/navigation'
-import { redirect } from 'next/navigation'
+
 export const Header: React.FC = () => {
   const router = useRouter()
 
@@ -32,7 +32,7 @@ export const Header: React.FC = () => {
     createWallet('app.phantom')
   ]
   const handleRedirect = () => {
-    redirect('/')
+    router.push('/')
 
   }
   return (
