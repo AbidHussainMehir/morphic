@@ -78,6 +78,12 @@ export default function RootLayout({
         {`
           var _mtm = window._mtm = window._mtm || [];
           _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+          _mtm.push({
+    'event': 'wallet-button-clicked',
+    'event-category': 'connect-wallet-button',
+    'event-value': 'Connect wallet',
+    'event-action': 'Athena - www.athena.ai'
+  })
           (function() {
             var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
             g.async=true; g.src='https://analytics.theathena.ai/js/container_aJYRdJOn.js'; s.parentNode.insertBefore(g,s);
@@ -90,14 +96,14 @@ export default function RootLayout({
           fontFamily: 'Jost, sans-serif'
         }}
       >
-        <noscript>
+        {/* <noscript>
           <img
             referrerPolicy="no-referrer-when-downgrade"
             src="https://analytics.theathena.ai/matomo.php?idsite=1&amp;rec=1"
             style={{ border: '0' }}
             alt=""
           />
-        </noscript>
+        </noscript> */}
         <ThirdwebProvider>
           <ThemeProvider
             attribute="class"
