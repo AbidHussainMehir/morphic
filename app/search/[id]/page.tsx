@@ -2,6 +2,7 @@ import { notFound, redirect } from 'next/navigation'
 import { Chat } from '@/components/chat'
 import { getChat } from '@/lib/actions/chat'
 import { AI } from '@/app/actions'
+import { useActiveAccount } from 'thirdweb/react'
 
 export const maxDuration = 60
 
@@ -29,12 +30,14 @@ export default async function SearchPage({ params }: SearchPageProps) {
   if (chat?.userId !== userId) {
     notFound()
   }
+  const account: any = { address: '0xb5483f5866A17635D8256d589f0905a54f8eA414' }
 
   return (
     <AI
       initialAIState={{
         chatId: chat.id,
-        messages: chat.messages
+        messages: chat.messages,
+        user: account?.address
       }}
     >
       <Chat id={params.id} />

@@ -18,7 +18,52 @@ export const Header: React.FC = () => {
 
   const account = useActiveAccount()
   let isConnected = !!account
+  useEffect(() => {
+    const script = document.createElement('script')
+    script.async = true
+    script.src = 'https://analytics.theathena.ai/js/container_aJYRdJOn.js'
+    document.head.appendChild(script)
 
+    script.onload = () => {
+      // Ensure _paq is initialized only once
+      window._paq = window._paq || []
+
+      // Add Matomo tracking code
+      window._paq.push(['trackPageView'])
+      window._paq.push(['enableLinkTracking'])
+      window._paq.push([
+        'setTrackerUrl',
+        'https://analytics.theathena.ai/matomo.php'
+      ])
+      window._paq.push(['setSiteId', 1])
+      window._paq.push([
+        'trackEvent',
+        'logo-click',
+        'logo-clicked',
+        'Athena - http://localhost:3000/'
+      ])
+    }
+
+    return () => {
+      document.head.removeChild(script)
+      // No need to clear _paq array to avoid duplicate entries in subsequent renders
+    }
+  }, [])
+  const handleSearch = () => {
+    window._paq.push([
+      'trackEvent',
+      'site-search-keywords-tracking',
+      'site-search-keywords',
+      `Athena - http://localhost:3000/`,
+      `${account?.address}`
+    ])
+    // window._paq.push({
+    //   event: 'site-search-keywords-tracking',
+    //   'event-category': 'site-search-keywords',
+    //   'event-value': 'ENTERED-KEYWORD',
+    //   'event-action': 'CURRENT_PAGE_TITLE - CURRENT_PAGE_URL'
+    // })
+  }
   const wallets = [
     createWallet('io.metamask'),
     createWallet('com.coinbase.wallet'),
@@ -33,31 +78,33 @@ export const Header: React.FC = () => {
   ]
   const handleRedirect = () => {
     router.push('/')
-
   }
-  useEffect(() => {
-    const handleLogoClick = () => {
-      window._mtm = window._mtm || []
-      window._mtm.push({
-        event: 'logo-click',
-        'event-category': 'logo-clicked',
-        'event-action': document.title + ' - ' + window.location.href
-      })
-    }
+  // useEffect(() => {
+  //   const handleLogoClick = () => {
+  //     window._mtm = window._mtm || []
+  //     window._mtm.push({
+  //       event: 'logo-click',
+  //       'event-category': 'logo-clicked',
+  //       'event-action': document.title + ' - ' + window.location.href
+  //     })
+  //   }
 
-    const logoElement = document.getElementById('logo')
-    if (logoElement) {
-      logoElement.addEventListener('click', handleLogoClick)
-    }
+  //   const logoElement = document.getElementById('logo')
+  //   if (logoElement) {
+  //     logoElement.addEventListener('click', handleLogoClick)
+  //   }
 
-    return () => {
-      if (logoElement) {
-        logoElement.removeEventListener('click', handleLogoClick)
-      }
-    }
-  }, [])
+  //   return () => {
+  //     if (logoElement) {
+  //       logoElement.removeEventListener('click', handleLogoClick)
+  //     }
+  //   }
+  // }, [])
   return (
-    <header className="fixed w-full p-1 md:p-2 flex justify-between items-center z-10 backdrop-blur md:backdrop-blur-none bg-white md:bg-transparent">
+    <header
+      onClick={handleSearch}
+      className="fixed w-full p-1 md:p-2 flex justify-between items-center z-10 backdrop-blur md:backdrop-blur-none bg-white md:bg-transparent"
+    >
       <div>
         <span className="ml-5 gap-3 flex justify-center align-center">
           {/* <Button className="mr-2" variant="ghost" size="icon"> */}

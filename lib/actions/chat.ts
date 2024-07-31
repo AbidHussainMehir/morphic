@@ -26,7 +26,9 @@ export async function getChats(userId?: string | null) {
     }
 
     const results = await pipeline.exec()
-
+    console.log('chats:', chats)
+    console.log('userId:', userId)
+    console.log('results:', results)
     return results as Chat[]
   } catch (error) {
     return []

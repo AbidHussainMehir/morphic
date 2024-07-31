@@ -25,6 +25,7 @@ import { transformToolMessages } from '@/lib/utils'
 import { AnswerSection } from '@/components/answer-section'
 import { ErrorCard } from '@/components/error-card'
 import { use } from 'react'
+import { ConnectButton, useActiveAccount } from 'thirdweb/react'
 
 async function submit(
   formData?: FormData,
@@ -275,6 +276,7 @@ export type AIState = {
   messages: AIMessage[]
   chatId: string
   isSharePage?: boolean
+  user?: any
 }
 
 export type UIState = {
@@ -286,7 +288,8 @@ export type UIState = {
 
 const initialAIState: AIState = {
   chatId: generateId(),
-  messages: []
+  messages: [],
+  user: undefined
 }
 
 const initialUIState: UIState = []
@@ -317,9 +320,10 @@ export const AI = createAI<AIState, UIState>({
       return
     }
 
-    const { chatId, messages } = state
+    const { chatId, messages, user } = state
     const createdAt = new Date()
-    const userId = 'anonymous'
+    console.log('user:', user)
+    const userId = user ?? 'anonymous'
     const path = `/search/${chatId}`
     const title =
       messages.length > 0
@@ -345,6 +349,7 @@ export const AI = createAI<AIState, UIState>({
       title,
       messages: updatedMessages
     }
+    console.log('adding:', chat)
     await saveChat(chat)
   }
 })

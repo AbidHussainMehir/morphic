@@ -74,22 +74,6 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </Head>
-      <Script id="matomo-tag-manager" strategy="afterInteractive">
-        {`
-          var _mtm = window._mtm = window._mtm || [];
-          _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
-          _mtm.push({
-    'event': 'wallet-button-clicked',
-    'event-category': 'connect-wallet-button',
-    'event-value': 'Connect wallet',
-    'event-action': 'Athena - www.athena.ai'
-  })
-          (function() {
-            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-            g.async=true; g.src='https://analytics.theathena.ai/js/container_aJYRdJOn.js'; s.parentNode.insertBefore(g,s);
-          })();
-        `}
-      </Script>
 
       <body
         style={{

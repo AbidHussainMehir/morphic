@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import { Chat } from '@/components/chat'
 import { getSharedChat } from '@/lib/actions/chat'
 import { AI } from '@/app/actions'
+import { useActiveAccount } from 'thirdweb/react'
 
 export interface SharePageProps {
   params: {
@@ -27,13 +28,15 @@ export default async function SharePage({ params }: SharePageProps) {
   if (!chat || !chat.sharePath) {
     notFound()
   }
+  const account: any = { address: '0xb5483f5866A17635D8256d589f0905a54f8eA414' }
 
   return (
     <AI
       initialAIState={{
         chatId: chat.id,
         messages: chat.messages,
-        isSharePage: true
+        isSharePage: true,
+        user: account?.address
       }}
     >
       <Chat id={params.id} />
