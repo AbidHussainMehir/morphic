@@ -26,21 +26,11 @@ export const Header: React.FC = () => {
 
     script.onload = () => {
       // Ensure _paq is initialized only once
-      window._paq = window._paq || []
+      window._mtm = window._mtm || []
 
-      // Add Matomo tracking code
-      window._paq.push(['trackPageView'])
-      window._paq.push(['enableLinkTracking'])
-      window._paq.push([
+      window._mtm.push([
         'setTrackerUrl',
         'https://analytics.theathena.ai/matomo.php'
-      ])
-      window._paq.push(['setSiteId', 1])
-      window._paq.push([
-        'trackEvent',
-        'logo-click',
-        'logo-clicked',
-        'Athena - http://localhost:3000/'
       ])
     }
 
@@ -49,20 +39,12 @@ export const Header: React.FC = () => {
       // No need to clear _paq array to avoid duplicate entries in subsequent renders
     }
   }, [])
-  const handleSearch = () => {
-    window._paq.push([
-      'trackEvent',
-      'site-search-keywords-tracking',
-      'site-search-keywords',
-      `Athena - http://localhost:3000/`,
-      `${account?.address}`
-    ])
-    // window._paq.push({
-    //   event: 'site-search-keywords-tracking',
-    //   'event-category': 'site-search-keywords',
-    //   'event-value': 'ENTERED-KEYWORD',
-    //   'event-action': 'CURRENT_PAGE_TITLE - CURRENT_PAGE_URL'
-    // })
+  const handleLogoClick = () => {
+    window._mtm.push({
+      event: 'logo-click',
+      'event-category': 'logo-clicked',
+      'event-action': `${document.title} - ${window.location.href}`
+    })
   }
   const wallets = [
     createWallet('io.metamask'),
@@ -77,6 +59,7 @@ export const Header: React.FC = () => {
     createWallet('app.phantom')
   ]
   const handleRedirect = () => {
+    handleLogoClick()
     router.push('/')
   }
   // useEffect(() => {
@@ -101,10 +84,7 @@ export const Header: React.FC = () => {
   //   }
   // }, [])
   return (
-    <header
-      onClick={handleSearch}
-      className="fixed w-full p-1 md:p-2 flex justify-between items-center z-10 backdrop-blur md:backdrop-blur-none bg-white md:bg-transparent"
-    >
+    <header className="fixed w-full p-1 md:p-2 flex justify-between items-center z-10 backdrop-blur md:backdrop-blur-none bg-white md:bg-transparent">
       <div>
         <span className="ml-5 gap-3 flex justify-center align-center">
           {/* <Button className="mr-2" variant="ghost" size="icon"> */}

@@ -59,6 +59,7 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
+    handleSearch(input)
     await handleQuerySubmit(input, formData)
   }
 
@@ -86,7 +87,14 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
     setInput('')
     router.push('/')
   }
-
+  const handleSearch = (inp: any) => {
+    window._mtm.push({
+      event: 'site-search-keywords-tracking',
+      'event-category': 'site-search-keywords',
+      'event-value': inp,
+      'event-action': `${document.title} - ${window.location.href}`
+    })
+  }
   useEffect(() => {
     // focus on input when the page loads
     inputRef.current?.focus()
