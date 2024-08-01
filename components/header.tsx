@@ -27,11 +27,6 @@ export const Header: React.FC = () => {
     script.onload = () => {
       // Ensure _paq is initialized only once
       window._mtm = window._mtm || []
-
-      window._mtm.push([
-        'setTrackerUrl',
-        'https://analytics.theathena.ai/matomo.php'
-      ])
     }
 
     return () => {
@@ -46,6 +41,7 @@ export const Header: React.FC = () => {
       'event-action': `${document.title} - ${window.location.href}`
     })
   }
+
   const wallets = [
     createWallet('io.metamask'),
     createWallet('com.coinbase.wallet'),
@@ -62,27 +58,14 @@ export const Header: React.FC = () => {
     handleLogoClick()
     router.push('/')
   }
-  // useEffect(() => {
-  //   const handleLogoClick = () => {
-  //     window._mtm = window._mtm || []
-  //     window._mtm.push({
-  //       event: 'logo-click',
-  //       'event-category': 'logo-clicked',
-  //       'event-action': document.title + ' - ' + window.location.href
-  //     })
-  //   }
-
-  //   const logoElement = document.getElementById('logo')
-  //   if (logoElement) {
-  //     logoElement.addEventListener('click', handleLogoClick)
-  //   }
-
-  //   return () => {
-  //     if (logoElement) {
-  //       logoElement.removeEventListener('click', handleLogoClick)
-  //     }
-  //   }
-  // }, [])
+  const handleConnectWallet = () => {
+    window._mtm.push({
+      event: 'wallet-button-clicked',
+      'event-category': 'connect-wallet-button',
+      'event-value': 'Connect Wallet',
+      'event-action': `${document.title} - ${window.location.href}`
+    })
+  }
   return (
     <header className="fixed w-full p-1 md:p-2 flex justify-between items-center z-10 backdrop-blur md:backdrop-blur-none bg-white md:bg-transparent">
       <div>
@@ -100,7 +83,10 @@ export const Header: React.FC = () => {
           <ModeToggle />
         </span> */}
         <HistoryContainer location="header" />
-        <div className={`${isConnected ? 'connected' : 'connect'}`}>
+        <div
+          onClick={handleConnectWallet}
+          className={`${isConnected ? 'connected' : 'connect'}`}
+        >
           <ConnectButton
             client={client}
             wallets={wallets}
