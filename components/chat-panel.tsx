@@ -15,6 +15,12 @@ import { useAppState } from '@/lib/utils/app-state'
 import Typewriter from 'typewriter-effect'
 import { IconLogo } from './ui/icons'
 import { useTheme } from 'next-themes'
+import { Input } from 'postcss'
+import mockData from '../public/mockData.json'
+import { SearchResults } from './search-results'
+import { SearchSection } from './search-section'
+import { SearchSectionCopy } from './search-section-copy'
+import { AnswerSectionCopy } from './answer-section copy'
 
 interface ChatPanelProps {
   messages: UIState
@@ -25,14 +31,17 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
   const { theme } = useTheme()
 
   const [input, setInput] = useState('')
+  const [searchResultApi, setSearchResult] = useState<any>('')
   const [showEmptyScreen, setShowEmptyScreen] = useState(false)
   const [, setMessages] = useUIState<typeof AI>()
   const [aiMessage, setAIMessage] = useAIState<typeof AI>()
+  // const [dummyData, setDummyData] = useAIState<any>(JSON.parse(mockData))
   const { isGenerating, setIsGenerating } = useAppState()
   const { submit } = useActions()
   const router = useRouter()
   const inputRef = useRef<HTMLTextAreaElement>(null)
   const isFirstRender = useRef(true) // For development environment
+
 
   async function handleQuerySubmit(query: string, formData?: FormData) {
     setInput(query)
@@ -57,10 +66,28 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+   
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
-    handleSearch(input)
-    await handleQuerySubmit(input, formData)
+   
+    try {
+      const response = await fetch('https://ai.joblab.ai/text-search/', {
+          method: 'POST',
+          headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ text:input }) // Convert the object to a JSON string
+      });
+      const data = await response.json();
+      setSearchResult(data)
+      console.log('data', data);
+  } catch (error) {
+      console.log('error', error);
+  }
+  
+    // handleSearch(input)
+    // await handleQuerySubmit(input, formData)
   }
 
   // if query is not empty, submit the query
@@ -101,7 +128,7 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
   }, [])
 
   // If there are messages and the new button has not been pressed, display the new Button
-  if (messages.length > 0) {
+  if (messages?.length > 0) {
     return (
       <div className="fixed bottom-2 md:bottom-8 left-0 right-0 flex justify-center items-center mx-auto pointer-events-none">
         <Button
@@ -142,6 +169,7 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
             justifyContent: 'center',
             textAlign: 'center',
             width: '100%'
+           
           }}
         >
           <IconLogo className="" />
@@ -173,7 +201,7 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
               onInit={typewriter => {
                 typewriter
                   .pauseFor(100)
-                  .typeString('The Learn to Earn Knowledge Platform')
+                  .typeString('The Privacy Centric Learn to Earn Search Platform')
                   // .typeString('The AI Search Engine that Pays You to Learn ')
                   .pauseFor(400)
                   // .deleteChars(14)
@@ -259,6 +287,16 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
             />
           </Button>
         </div>
+    {
+      searchResultApi&&
+<div className='' style={{height:'300px',overflowY:'scroll'}}>
+<SearchSectionCopy result={searchResultApi?.searchResult  }></SearchSectionCopy>
+
+        <AnswerSectionCopy  result={searchResultApi.response?.choices[0].message.content}></AnswerSectionCopy>
+</div>
+    }
+      
+        {/* <SearchResults results={JSON.parse(JSON.stringify(mockData.searchResult.results  ))}></SearchResults> */}
         <EmptyScreen
           submitMessage={message => {
             setInput(message)
