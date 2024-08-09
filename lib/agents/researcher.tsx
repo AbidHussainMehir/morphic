@@ -93,7 +93,6 @@ export async function researcher(
         toolResponses.push(delta)
         break
       case 'error':
-        console.log('Error: ' + delta.error)
         hasError = true
         fullResponse += `\nError occurred while executing the tool`
         break

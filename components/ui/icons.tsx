@@ -3,7 +3,6 @@ import { useTheme } from 'next-themes'
 
 function IconLogo({ className, ...props }: React.ComponentProps<'svg'>) {
   const { theme } = useTheme()
-  console.log({ theme })
 
   // Determine image source based on theme
   const logoSrc = theme === 'dark' ? '/logo-white.svg' : '/logo.svg'

@@ -322,7 +322,6 @@ export const AI = createAI<AIState, UIState>({
 
     const { chatId, messages, user } = state
     const createdAt = new Date()
-    console.log('user:', user)
     const userId = user ?? 'anonymous'
     const path = `/search/${chatId}`
     const title =
@@ -349,7 +348,6 @@ export const AI = createAI<AIState, UIState>({
       title,
       messages: updatedMessages
     }
-    console.log('adding:', chat)
     await saveChat(chat)
   }
 })
