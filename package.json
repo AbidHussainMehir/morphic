@@ -36,7 +36,7 @@
     "highcharts-react-official": "^3.2.1",
     "katex": "^0.16.10",
     "lucide-react": "^0.363.0",
-    "next": "^14.2.3",
+    "next": "^15.5.24",
     "next-themes": "^0.3.0",
     "ollama-ai-provider": "^0.7.0",
     "react": "^18.3.1",
